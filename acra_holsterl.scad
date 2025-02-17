@@ -86,10 +86,10 @@ union()
              translate([-10,5, 20+BackHeight*25])
                 rotate([ 0,90, 0])
             cylinder(h=40,r=5);
-             translate([-10,-10, 15+BackHeight*15])
+            translate([-10,-10, 5+BackHeight*15])
                 rotate([ 0,90, 0])
             cylinder(h=40,r=5);
-             translate([-10,20, 15+BackHeight*15])
+             translate([-10,15, 20+BackHeight*15])
                 rotate([ 0,90, 0])
             cylinder(h=40,r=5);
 
