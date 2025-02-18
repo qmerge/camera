@@ -4,15 +4,15 @@ include <boltsos/BOLTS.scad>
 //arca =[[35,8],[35,10],[38,13],[38,15],[0,15],[0,13],[3,8],[3,8],[-4,0],[0,0],[1,1],[40,1],[42,0]];
 arca =[[35,8],[35,10],[38,13],[38,15],[0,15],[0,13],[4,10],[4,8],[0,4],[0,2],[38,2],[38,4]];
 
-fitting=[[0,17],[0,0],[10,0],[10,4],[5,13],[5,17]];
+fitting=[[0,18],[0,0],[11.7,0],[11.7,4],[5.85,14.2],[5.85,18]];
 
 
 tp = [
   [0, 1],
   [1, 0]
 ];
-base1 = 40;
-base2 = 37+6-.7;//84mm + 6mm for width of mount-.2 rounding?
+base1 = 50;
+base2 = 44-.7;//84mm + 6mm for width of mount-.2 rounding?
 union() 
 {
      difference()
@@ -25,17 +25,23 @@ union()
                 linear_extrude(height = base1)
                     polygon(points = arca * tp);
             //*/
-                translate([-5,0, 0])
+                translate([-15,0, 0])
              translate([-base2,0,  0])
                 rotate_extrude()
                     translate([-base2,0,  0])
                         polygon(fitting);
-                translate([-6.4, 0,8])
-            cube([8,38,16], center=true);
+            //offset
+                translate([-11.4, 0,8])
+                    cube([18,38,16], center=true);
+            //corner
+            rotate([0,40,0])
+                translate([-13.7, 0,6])
+                    cube([2.1,38,16], center=true);
+
         }
         union()
         {
-            cube([40,2,100], center=true);
+            cube([60,2,100], center=true);
             rotate([90,0,0])
                 translate([.5,7, 0])
                     union()
