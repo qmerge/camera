@@ -6,6 +6,7 @@ include <boltsos/BOLTS.scad>
 arca=[[35,8],[35,10],[38,13],[38,15],[0,15],[0,13],[3,10],[3,8],[0,5],[0,3],[38,3],[38,5]];
 fittings=[[0,54,1],[0,0,1],[4,-1,1],[6,0,1],[6,54,1],[4,55,1]];
 fitting=[[28,0],[0,0],[0,6],[28,6],[29,4]];
+fillett=[[10,0],[0,0],[0,17],[1,15],[2,10],[5,4]];
 tps = [
   [0, 1.15],
   [1.15, 0]
@@ -17,6 +18,7 @@ tpf = [
 base1 = 30;
 base2 = 30;
 BackHeight=2;
+scale([1.05, 1.05, 1])
 union() 
 {
     difference()
@@ -60,21 +62,40 @@ union()
                 rotate([ 0,180, 90])
                      rotate_extrude(angle = 180, $fn = 100)
                             polygon(fitting);
+//back thicker
+                   translate([-10,27.1, 0])
+            rotate([ 0,-15, 0])
+                           cube([23,55,5],center=true);
 //stiffeners
-        translate([2,1.5, -2])
-            rotate([ -5,0, -3])
-        scale([1, .5, .5])
-            rotate([ 90,0, 0])
-                rotate([ 0,0, 90])
-                   rotate_extrude(angle = 90)
-                       polygon(fitting);
-        translate([2,55.5, -2])
-            rotate([ 5,0, 3])
+        translate([.1,1.5, -.10])
+             rotate([ -8,0, -4])
                 scale([1, .5, .5])
                   rotate([ 90,0, 0])
                     rotate([ 0,0, 90])
-                        rotate_extrude(angle = 90)
-                            polygon(fitting);
+                    {
+                      scale([3, 2, 1])                      
+                        linear_extrude(5)
+                            polygon(fillett); 
+        translate([0,0, -4])
+                     scale([4, 3, 1])                      
+                        linear_extrude(5)
+                            polygon(fillett); 
+                    }
+                            
+             translate([.1,55.5, -.1])
+            rotate([ 8,0, 4])
+                scale([1, .5, .5])
+                  rotate([ 90,0, 0])
+                    rotate([ 0,0, 90])
+                    {
+                           scale([3, 2, 1])
+                        linear_extrude(5)
+                            polygon(fillett);
+        translate([0,0, 4])
+                     scale([4, 3, 1])                      
+                        linear_extrude(5)
+                            polygon(fillett); 
+                    }
         }
         union() 
         {                        
@@ -86,13 +107,20 @@ union()
              translate([-10,5, 20+BackHeight*25])
                 rotate([ 0,90, 0])
             cylinder(h=40,r=5);
-            translate([-10,-10, 5+BackHeight*15])
-                rotate([ 0,90, 0])
-            cylinder(h=40,r=5);
-             translate([-10,15, 20+BackHeight*15])
-                rotate([ 0,90, 0])
-            cylinder(h=40,r=5);
-
+//            translate([-10,-10, 5+BackHeight*15])
+//                rotate([ 0,90, 0])
+//            cylinder(h=40,r=5);
+//             translate([-10,15, 20+BackHeight*15])
+//                rotate([ 0,90, 0])
+//            cylinder(h=40,r=5);
+            
+//acetone holes
+             translate([-3,15, -5])
+                rotate([ 0,0, 90])
+            cylinder(h=90,r=1);
+             translate([-3,-5, -5])
+                rotate([ 0,0, 90])
+            cylinder(h=90,r=1);
           
         }
   };
