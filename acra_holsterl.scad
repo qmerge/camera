@@ -22,7 +22,7 @@ scale([1.05, 1.05, 1])
 union() 
 {
     difference()
-//    union()
+ //   union()
     {
         rotate([ 0,90, 0])
              translate([0,-25, 0])
@@ -67,7 +67,7 @@ union()
             rotate([ 0,-15, 0])
                            cube([23,55,5],center=true);
 //stiffeners
-        translate([.1,1.5, -.10])
+        translate([.1,1.3, -.10])
              rotate([ -8,0, -4])
                 scale([1, .5, .5])
                   rotate([ 90,0, 0])
@@ -76,10 +76,15 @@ union()
                       scale([3, 2, 1])                      
                         linear_extrude(5)
                             polygon(fillett); 
+              translate([-1,-2, -2])
+                     scale([4, 3, 1])                      
+                        linear_extrude(5)
+                            polygon(fillett); 
         translate([0,0, -4])
                      scale([4, 3, 1])                      
                         linear_extrude(5)
                             polygon(fillett); 
+//*/
                     }
                             
              translate([.1,55.5, -.1])
@@ -91,11 +96,16 @@ union()
                            scale([3, 2, 1])
                         linear_extrude(5)
                             polygon(fillett);
+        translate([-1,-2, 2])
+                     scale([4, 3, 1])                      
+                        linear_extrude(5)
+                            polygon(fillett); 
         translate([0,0, 4])
                      scale([4, 3, 1])                      
                         linear_extrude(5)
                             polygon(fillett); 
-                    }
+
+                            }
         }
         union() 
         {                        
@@ -115,13 +125,20 @@ union()
 //            cylinder(h=40,r=5);
             
 //acetone holes
-             translate([-3,15, -5])
+             translate([-3,15, -15])
                 rotate([ 0,0, 90])
-            cylinder(h=90,r=1);
-             translate([-3,-5, -5])
+            cylinder(h=190,r=1);
+             translate([-3,-5, -15])
                 rotate([ 0,0, 90])
-            cylinder(h=90,r=1);
-          
+            cylinder(h=190,r=1);
+//bottom holes     
+            translate([28,30, -15])
+                rotate([-40,1, 90])
+            cylinder(h=19.6,r=.5);
+            translate([28,-21, -15])
+                rotate([-40,1, 90])
+            cylinder(h=19.6,r=.5);
+     
         }
   };
 };

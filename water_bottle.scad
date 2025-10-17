@@ -12,7 +12,7 @@ tp = [
   [1, 0]
 ];
 base1 = 50;
-base2 = 40+5.25;//84mm + 6mm for width of mount-.2 rounding?
+base2 = 43.5+5.5;//84mm + 6mm for width of mount-.2 rounding?
 union() 
 {
      difference()
