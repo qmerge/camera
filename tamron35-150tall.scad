@@ -59,6 +59,28 @@ union()
                         cylinder( 6,4,4,true);
                     }
              cube([200,200,1], center=true);
+             {//acetone pipes
+                 translate([14, 14,-40])
+                    cylinder(h=190,r=.5);
+                 translate([14, -16,-40])
+                    cylinder(h=190,r=.5);
+                 translate([21, 14,-40])
+                    cylinder(h=190,r=.5);
+                 translate([21, -16,-40])
+                    cylinder(h=190,r=.5);
+                 translate([-10, 10,2])
+                    rotate([ 0, 90,0])
+                        cylinder(h=190,r=.5);
+                 translate([-10, -10,2])
+                    rotate([ 0, 90,0])
+                        cylinder(h=190,r=.5);
+                 translate([-10, 10,14])
+                    rotate([ 0, 90,0])
+                        cylinder(h=190,r=.5);
+                 translate([-10, -10,14])
+                    rotate([ 0, 90,0])
+                        cylinder(h=190,r=.5);
+            }
         }
   };
 };
